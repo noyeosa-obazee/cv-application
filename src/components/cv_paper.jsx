@@ -42,6 +42,7 @@ export function CVPreview({ info, onEdit }) {
               fontFamily: "Elms Sans",
               letterSpacing: "1px",
             }}
+            className="phone-email-arranger"
           >
             {info.email && <span>📧 {info.email}</span>}
             {info.phoneNo && <span>📞 {info.phoneNo}</span>}
@@ -61,6 +62,7 @@ export function CVPreview({ info, onEdit }) {
                     justifyContent: "space-between",
                     fontWeight: "bold",
                   }}
+                  className="preview-dates"
                 >
                   <span>School name: {edu.schoolName}</span>
                   <span>
@@ -85,6 +87,7 @@ export function CVPreview({ info, onEdit }) {
                     justifyContent: "space-between",
                     fontWeight: "bold",
                   }}
+                  className="preview-dates"
                 >
                   <span>Company: {exp.companyName}</span>
                   <span>

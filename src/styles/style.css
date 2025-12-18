@@ -20,6 +20,7 @@ input {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 .header {
@@ -421,6 +422,28 @@ input {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   font-family: "Poppins", sans-serif;
   color: #333;
+}
+
+@media screen and (max-width: 720px) {
+  .cv-paper {
+    width: fit-content;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .preview-container {
+    padding: 0;
+  }
+
+  .preview-dates {
+    flex-direction: column;
+  }
+
+  .phone-email-arranger {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media print {
