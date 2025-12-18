@@ -1,11 +1,43 @@
 import { useState } from "react";
-import { CV } from "./classes.js";
+import { CV, Experience, Education } from "./classes.js";
 
-function CVForm() {
-  //   const cv = new CV();
-  //   const [cvInfo, setCvInfo] = useState(cv);
+export function CVForm() {
+  const [cvInfo, setCvInfo] = useState(() => new CV());
+  const [educationInfo, setEducationInfo] = useState(() => new Education());
+  const [experienceInfo, setExperienceInfo] = useState(() => new Experience());
   const [step, setStep] = useState(1);
 
+  function updateCv(e) {
+    if (!Array.isArray(cvInfo[e.target.name])) {
+      setCvInfo({ ...cvInfo, [e.target.name]: e.target.value });
+    }
+  }
+
+  function updateEducation(e) {
+    setEducationInfo({ ...educationInfo, [e.target.name]: e.target.value });
+  }
+
+  function updateExperience(e) {
+    setExperienceInfo({ ...experienceInfo, [e.target.name]: e.target.value });
+  }
+
+  function addEducationToCv() {
+    setCvInfo({
+      ...cvInfo,
+      educations: [...cvInfo.educations, educationInfo],
+    });
+    const newEducation = new Education();
+    setEducationInfo(newEducation);
+  }
+
+  function addExperienceToCv() {
+    setCvInfo({
+      ...cvInfo,
+      expereinces: [...cvInfo.experiences, experienceInfo],
+    });
+    const newExperience = new Experience();
+    setExperienceInfo(newExperience);
+  }
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
@@ -18,20 +50,35 @@ function CVForm() {
 
       <div className="form-group">
         <label>Full Name</label>
-        <input type="text" placeholder="e.g. John Doe" />
+        <input
+          type="text"
+          name="fullName"
+          onChange={updateCv}
+          placeholder="e.g. John Doe"
+        />
       </div>
       <div className="form-group">
         <label>Email Address</label>
-        <input type="email" placeholder="john@example.com" />
+        <input
+          type="email"
+          name="email"
+          onChange={updateCv}
+          placeholder="john@example.com"
+        />
       </div>
       <div className="form-group">
         <label>Phone Number</label>
-        <input type="tel" placeholder="+234..." />
+        <input
+          type="tel"
+          name="phoneNo"
+          onChange={updateCv}
+          placeholder="+234..."
+        />
       </div>
     </div>
   );
 
-  const Education = (
+  const EducationForm = (
     <div className="form-step">
       <h2>Step 2: Education</h2>
       <p style={{ marginBottom: "20px", color: "#666" }}>
@@ -71,11 +118,32 @@ function CVForm() {
 
           <div className="form-group">
             <label>School Name</label>
-            <input type="text" placeholder="e.g. UNIBEN" />
+            <input
+              type="text"
+              name="schoolName"
+              onChange={updateEducation}
+              placeholder="e.g. UNIBEN"
+            />
           </div>
           <div className="form-group">
             <label>Degree</label>
-            <input type="text" placeholder="e.g. LLB" />
+            <input
+              type="text"
+              name="degree"
+              onChange={updateEducation}
+              placeholder="e.g. LLB"
+            />
+          </div>
+
+          <div style={{ display: "flex", gap: "20px" }}>
+            <div className="form-group" style={{ flex: 1 }}>
+              <label>Start Date</label>
+              <input type="date" name="startDate" onChange={updateEducation} />
+            </div>
+            <div className="form-group" style={{ flex: 1 }}>
+              <label>End Date</label>
+              <input type="date" name="endDate" onChange={updateEducation} />
+            </div>
           </div>
 
           <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
@@ -89,6 +157,7 @@ function CVForm() {
                 borderRadius: "4px",
                 cursor: "pointer",
               }}
+              onClick={addEducationToCv}
             >
               Save
             </button>
@@ -113,7 +182,7 @@ function CVForm() {
     </div>
   );
 
-  const Experience = (
+  const ExperienceForm = (
     <div className="form-step">
       <h2>Step 3: Practical Experience</h2>
       <p style={{ marginBottom: "20px", color: "#666" }}>
@@ -153,19 +222,31 @@ function CVForm() {
 
           <div className="form-group">
             <label>Company Name</label>
-            <input type="text" placeholder="e.g. Paystack" />
+            <input
+              type="text"
+              name="companyName"
+              onChange={updateExperience}
+              placeholder="e.g. Paystack"
+            />
           </div>
 
           <div className="form-group">
             <label>Position Title</label>
-            <input type="text" placeholder="e.g. Junior Developer" />
+            <input
+              type="text"
+              name="positionTitle"
+              onChange={updateExperience}
+              placeholder="e.g. Junior Developer"
+            />
           </div>
 
           <div className="form-group">
             <label>Main Responsibilities</label>
 
             <textarea
+              name="mainResponsibilities"
               rows="4"
+              onChange={updateExperience}
               placeholder="Describe your main tasks and achievements..."
               style={{
                 width: "100%",
@@ -181,11 +262,11 @@ function CVForm() {
           <div style={{ display: "flex", gap: "20px" }}>
             <div className="form-group" style={{ flex: 1 }}>
               <label>Start Date</label>
-              <input type="date" />
+              <input type="date" name="startDate" onChange={updateExperience} />
             </div>
             <div className="form-group" style={{ flex: 1 }}>
               <label>End Date</label>
-              <input type="date" />
+              <input type="date" name="endDate" onChange={updateExperience} />
             </div>
           </div>
 
@@ -200,6 +281,7 @@ function CVForm() {
                 borderRadius: "4px",
                 cursor: "pointer",
               }}
+              onClick={addExperienceToCv}
             >
               Save
             </button>
@@ -228,8 +310,8 @@ function CVForm() {
     <div className="wizard-container">
       <form onSubmit={(e) => e.preventDefault()}>
         {step === 1 && GeneralInfo}
-        {step === 2 && Education}
-        {step === 3 && Experience}
+        {step === 2 && EducationForm}
+        {step === 3 && ExperienceForm}
       </form>
 
       <div className="wizard-footer">

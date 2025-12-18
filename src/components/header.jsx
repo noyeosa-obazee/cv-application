@@ -1,4 +1,4 @@
-function Header({ onStartBuild }) {
+export function Header({ onStartBuild }) {
   return (
     <header className="header">
       <div className="header-logo">CV Forge 🔨</div>
