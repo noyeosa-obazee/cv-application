@@ -3,9 +3,10 @@ import "./styles/style.css";
 import Header from "./components/header.jsx";
 import Footer from "./components/footer.jsx";
 import CVForm from "./components/cv_form.jsx";
+import CVPreview from "./components/cv_paper.jsx";
 
-function App() {
-  const hasCVs = false;
+export function App() {
+  const cvData = JSON.parse(localStorage.getItem("myCVData")) || null;
 
   const [showForm, setShowForm] = useState(false);
 
@@ -15,13 +16,11 @@ function App() {
 
       <main className="main-content">
         {showForm ? (
-          <CVForm />
+          <CVForm onBuild={() => setShowForm(false)} />
         ) : (
           <div className="content-wrapper">
-            {hasCVs ? (
-              <div>
-                <h2>Your CVs</h2>
-              </div>
+            {cvData ? (
+              <CVPreview info={cvData} onEdit={() => setShowForm(true)} />
             ) : (
               <div className="empty-state">
                 {/* <h2>No CV found 📄</h2> */}

@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CV, Experience, Education } from "./classes.js";
 
-export function CVForm() {
-  const [cvInfo, setCvInfo] = useState(() => new CV());
+export function CVForm({ onBuild }) {
+  const [cvInfo, setCvInfo] = useState(() => {
+    const savedData = localStorage.getItem("myCVData");
+
+    return savedData ? JSON.parse(savedData) : new CV();
+  });
   const [educationInfo, setEducationInfo] = useState(() => new Education());
   const [experienceInfo, setExperienceInfo] = useState(() => new Experience());
   const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    localStorage.setItem("myCVData", JSON.stringify(cvInfo));
+  }, [cvInfo]);
 
   function updateCv(e) {
     if (!Array.isArray(cvInfo[e.target.name])) {
@@ -39,7 +47,10 @@ export function CVForm() {
     setExperienceInfo(newExperience);
   }
   const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
+  const prevStep = () => {
+    if (step === 1) onBuild();
+    else setStep(step - 1);
+  };
 
   const GeneralInfo = (
     <div className="form-step">
@@ -55,6 +66,7 @@ export function CVForm() {
           name="fullName"
           onChange={updateCv}
           placeholder="e.g. John Doe"
+          value={cvInfo.fullName}
         />
       </div>
       <div className="form-group">
@@ -64,6 +76,7 @@ export function CVForm() {
           name="email"
           onChange={updateCv}
           placeholder="john@example.com"
+          value={cvInfo.email}
         />
       </div>
       <div className="form-group">
@@ -73,6 +86,7 @@ export function CVForm() {
           name="phoneNo"
           onChange={updateCv}
           placeholder="+234..."
+          value={cvInfo.phoneNo}
         />
       </div>
     </div>
@@ -334,20 +348,16 @@ export function CVForm() {
       </form>
 
       <div className="wizard-footer">
-        {step > 1 ? (
-          <button type="button" onClick={prevStep} className="btn-back">
-            Back
-          </button>
-        ) : (
-          <div></div>
-        )}
+        <button type="button" onClick={prevStep} className="btn-back">
+          Back
+        </button>
 
         {step < 3 ? (
           <button type="button" onClick={nextStep} className="btn-next">
             Next Step &rarr;
           </button>
         ) : (
-          <button type="submit" className="btn-submit">
+          <button type="submit" onClick={onBuild} className="btn-submit">
             Build CV 🚀
           </button>
         )}
