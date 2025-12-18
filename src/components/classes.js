@@ -6,6 +6,8 @@ class CV {
     this.phoneNo = "";
     this.educations = [];
     this.experiences = [];
+    this.links = [];
+    this.requiredFields = ["fullName", "email", "phoneNo"];
   }
 }
 
@@ -15,7 +17,7 @@ class Education {
     this.schoolName = "";
     this.degree = "";
     this.startDate = "";
-    this.endDate = "";
+    this.endDate = "Present";
   }
 }
 
@@ -26,8 +28,16 @@ class Experience {
     this.positionTitle = "";
     this.mainResponsibilities = "";
     this.startDate = "";
-    this.endDate = "";
+    this.endDate = "Present";
   }
 }
 
-export { CV, Education, Experience };
+class Link {
+  constructor() {
+    this.id = crypto.randomUUID();
+    this.label = "";
+    this.url = "";
+  }
+}
+
+export { CV, Education, Experience, Link };

@@ -48,6 +48,22 @@ export function CVPreview({ info, onEdit }) {
             {info.phoneNo && <span>📞 {info.phoneNo}</span>}
             {/* {info.address && <span>📍 {info.address}</span>} */}
           </div>
+          {info.links.length > 0 && (
+            <div className="cv-links-row">
+              {info.links.map((link) => (
+                <a
+                  key={link.id}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cv-link-item"
+                >
+                  {/* Small icon for visual flair */}
+                  🔗 {link.label}
+                </a>
+              ))}
+            </div>
+          )}
         </header>
 
         {/* EDUCATION */}
@@ -66,7 +82,7 @@ export function CVPreview({ info, onEdit }) {
                 >
                   <span>School name: {edu.schoolName}</span>
                   <span>
-                    Date: {edu.startDate} to {edu.endDate || "Present"}
+                    Date: {edu.startDate} to {edu.endDate}
                   </span>
                 </div>
                 <div style={{ fontWeight: "600" }}>Degree: {edu.degree}</div>
@@ -91,7 +107,7 @@ export function CVPreview({ info, onEdit }) {
                 >
                   <span>Company: {exp.companyName}</span>
                   <span>
-                    Date: {exp.startDate} to {exp.endDate || "Present"}
+                    Date: {exp.startDate} to {exp.endDate}
                   </span>
                 </div>
                 <div

@@ -19,7 +19,7 @@ export function App() {
           <CVForm onBuild={() => setShowForm(false)} />
         ) : (
           <div className="content-wrapper">
-            {cvData ? (
+            {cvData && cvData.requiredFields.every((field) => cvData[field]) ? (
               <CVPreview info={cvData} onEdit={() => setShowForm(true)} />
             ) : (
               <div className="empty-state">
