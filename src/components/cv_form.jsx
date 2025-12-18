@@ -33,7 +33,7 @@ export function CVForm() {
   function addExperienceToCv() {
     setCvInfo({
       ...cvInfo,
-      expereinces: [...cvInfo.experiences, experienceInfo],
+      experiences: [...cvInfo.experiences, experienceInfo],
     });
     const newExperience = new Experience();
     setExperienceInfo(newExperience);
@@ -86,20 +86,27 @@ export function CVForm() {
       </p>
 
       <div className="items-list">
-        <div className="item-card">
-          <div className="item-info">
-            <h3>University of Benin</h3>
-            <p>LLB - 2021 to 2025</p>
-          </div>
-          <div className="item-actions">
-            <button className="btn-edit" title="Edit">
-              ✎
-            </button>
-            <button className="btn-delete" title="Delete">
-              🗑️
-            </button>
-          </div>
-        </div>
+        {cvInfo.educations.map((education) => {
+          return (
+            <div className="item-card">
+              <div className="item-info">
+                <h3>{education.schoolName}</h3>
+                <p>
+                  {education.degree} - {education.startDate} to{" "}
+                  {education.endDate}
+                </p>
+              </div>
+              <div className="item-actions">
+                <button className="btn-edit" title="Edit">
+                  ✎
+                </button>
+                <button className="btn-delete" title="Delete">
+                  🗑️
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="input-section">
@@ -156,10 +163,11 @@ export function CVForm() {
                 padding: "8px 16px",
                 borderRadius: "4px",
                 cursor: "pointer",
+                fontWeight: "600",
               }}
               onClick={addEducationToCv}
             >
-              Save
+              + Add Education
             </button>
             <button
               className="btn-cancel"
@@ -170,6 +178,7 @@ export function CVForm() {
                 padding: "8px 16px",
                 borderRadius: "4px",
                 cursor: "pointer",
+                fontWeight: "600",
               }}
             >
               Cancel
@@ -178,7 +187,7 @@ export function CVForm() {
         </div>
       </div>
 
-      <button className="btn-add-new">+ Add Education</button>
+      {/* <button className="btn-add-new">+ Add Education</button> */}
     </div>
   );
 
@@ -190,20 +199,24 @@ export function CVForm() {
       </p>
 
       <div className="items-list">
-        <div className="item-card">
-          <div className="item-info">
-            <h3>Paystack</h3>
-            <p>Frontend Engineer</p>
-          </div>
-          <div className="item-actions">
-            <button className="btn-edit" title="Edit">
-              ✎
-            </button>
-            <button className="btn-delete" title="Delete">
-              🗑️
-            </button>
-          </div>
-        </div>
+        {cvInfo.experiences.map((experience) => {
+          return (
+            <div className="item-card">
+              <div className="item-info">
+                <h3>{experience.companyName}</h3>
+                <p>{experience.positionTitle}</p>
+              </div>
+              <div className="item-actions">
+                <button className="btn-edit" title="Edit">
+                  ✎
+                </button>
+                <button className="btn-delete" title="Delete">
+                  🗑️
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="input-section">
@@ -280,10 +293,11 @@ export function CVForm() {
                 padding: "8px 16px",
                 borderRadius: "4px",
                 cursor: "pointer",
+                fontWeight: "600",
               }}
               onClick={addExperienceToCv}
             >
-              Save
+              + Add Experience
             </button>
             <button
               className="btn-cancel"
@@ -294,6 +308,7 @@ export function CVForm() {
                 padding: "8px 16px",
                 borderRadius: "4px",
                 cursor: "pointer",
+                fontWeight: "600",
               }}
             >
               Cancel
@@ -302,7 +317,7 @@ export function CVForm() {
         </div>
       </div>
 
-      <button className="btn-add-new">+ Add Experience</button>
+      {/* <button className="btn-add-new">+ Add Experience</button> */}
     </div>
   );
 
