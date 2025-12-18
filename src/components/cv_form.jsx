@@ -169,20 +169,22 @@ export function CVForm() {
             >
               + Add Education
             </button>
-            <button
-              className="btn-cancel"
-              style={{
-                background: "#94a3b8",
-                color: "white",
-                border: "none",
-                padding: "8px 16px",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontWeight: "600",
-              }}
-            >
-              Cancel
-            </button>
+            {/* {cvInfo.educations.length > 0 && (
+              <button
+                className="btn-cancel"
+                style={{
+                  background: "#94a3b8",
+                  color: "white",
+                  border: "none",
+                  padding: "8px 16px",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontWeight: "600",
+                }}
+              >
+                Cancel
+              </button>
+            )} */}
           </div>
         </div>
       </div>
@@ -299,20 +301,22 @@ export function CVForm() {
             >
               + Add Experience
             </button>
-            <button
-              className="btn-cancel"
-              style={{
-                background: "#94a3b8",
-                color: "white",
-                border: "none",
-                padding: "8px 16px",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontWeight: "600",
-              }}
-            >
-              Cancel
-            </button>
+            {/* {cvInfo.experiences.length > 0 && (
+              <button
+                className="btn-cancel"
+                style={{
+                  background: "#94a3b8",
+                  color: "white",
+                  border: "none",
+                  padding: "8px 16px",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontWeight: "600",
+                }}
+              >
+                Cancel
+              </button>
+            )} */}
           </div>
         </div>
       </div>
