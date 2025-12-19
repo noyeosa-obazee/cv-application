@@ -15,6 +15,7 @@ class Education {
   constructor() {
     this.id = crypto.randomUUID();
     this.schoolName = "";
+    this.titleOfStudy = "";
     this.degree = "";
     this.startDate = "";
     this.endDate = "Present";

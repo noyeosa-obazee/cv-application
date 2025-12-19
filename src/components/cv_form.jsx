@@ -216,8 +216,9 @@ export function CVForm({ onBuild }) {
             <div className="item-card" key={education.id}>
               <div className="item-info">
                 <h3>{education.schoolName}</h3>
+                <p>{education.titleOfStudy}</p>
                 <p>
-                  {education.degree} - {education.startDate} to{" "}
+                  {education.degree} from {education.startDate} to{" "}
                   {education.endDate}
                 </p>
               </div>
@@ -267,13 +268,23 @@ export function CVForm({ onBuild }) {
             />
           </div>
           <div className="form-group">
+            <label>Title of study*</label>
+            <input
+              type="text"
+              name="titleOfStudy"
+              onChange={updateEducation}
+              value={educationInfo.titleOfStudy}
+              placeholder="e.g. Electircal Engineering"
+            />
+          </div>
+          <div className="form-group">
             <label>Degree*</label>
             <input
               type="text"
               name="degree"
               onChange={updateEducation}
               value={educationInfo.degree}
-              placeholder="e.g. LLB"
+              placeholder="e.g. BSC"
             />
           </div>
 
@@ -357,7 +368,10 @@ export function CVForm({ onBuild }) {
             <div className="item-card" key={experience.id}>
               <div className="item-info">
                 <h3>{experience.companyName}</h3>
-                <p>{experience.positionTitle}</p>
+                <p>
+                  {experience.positionTitle} from {experience.startDate} to{" "}
+                  {experience.endDate}
+                </p>
               </div>
               <div className="item-actions">
                 <button
