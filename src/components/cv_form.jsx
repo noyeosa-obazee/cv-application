@@ -152,6 +152,14 @@ export function CVForm({ onBuild }) {
   function editLink(id) {
     setLinkInfo(cvInfo.links.find((link) => link.id === id));
   }
+
+  function handleCvBuild() {
+    if (cvInfo.fullName && cvInfo.email && cvInfo.phoneNo) {
+      onBuild();
+    } else {
+      setErrorMessage("Please fill in all required fields");
+    }
+  }
   const nextStep = () => setStep(step + 1);
   const prevStep = () => {
     if (step === 1) onBuild();
@@ -224,6 +232,7 @@ export function CVForm({ onBuild }) {
               </div>
               <div className="item-actions">
                 <button
+                  type="button"
                   className="btn-edit"
                   onClick={() => editEducation(education.id)}
                   title="Edit"
@@ -231,6 +240,7 @@ export function CVForm({ onBuild }) {
                   ✎
                 </button>
                 <button
+                  type="button"
                   className="btn-delete"
                   onClick={() => deleteEducation(education.id)}
                   title="Delete"
@@ -258,8 +268,9 @@ export function CVForm({ onBuild }) {
           </h4>
 
           <div className="form-group">
-            <label>School Name*</label>
+            <label htmlFor="school-name">School Name*</label>
             <input
+              id="school-name"
               type="text"
               name="schoolName"
               onChange={updateEducation}
@@ -268,8 +279,9 @@ export function CVForm({ onBuild }) {
             />
           </div>
           <div className="form-group">
-            <label>Title of study*</label>
+            <label htmlFor="title-of-study">Title of study*</label>
             <input
+              id="title-of-study"
               type="text"
               name="titleOfStudy"
               onChange={updateEducation}
@@ -278,8 +290,9 @@ export function CVForm({ onBuild }) {
             />
           </div>
           <div className="form-group">
-            <label>Degree*</label>
+            <label htmlFor="degree">Degree*</label>
             <input
+              id="degree"
               type="text"
               name="degree"
               onChange={updateEducation}
@@ -293,8 +306,9 @@ export function CVForm({ onBuild }) {
             className="date-arranger"
           >
             <div className="form-group" style={{ flex: 1 }}>
-              <label>Start Date*</label>
+              <label htmlFor="start-date">Start Date*</label>
               <input
+                id="start-date"
                 type="date"
                 name="startDate"
                 onChange={updateEducation}
@@ -302,8 +316,9 @@ export function CVForm({ onBuild }) {
               />
             </div>
             <div className="form-group" style={{ flex: 1 }}>
-              <label>End Date (optional)</label>
+              <label htmlFor="end-date">End Date (optional)</label>
               <input
+                id="end-date"
                 type="date"
                 name="endDate"
                 onChange={updateEducation}
@@ -316,6 +331,7 @@ export function CVForm({ onBuild }) {
 
           <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
             <button
+              type="button"
               className="btn-save"
               style={{
                 background: "#2563eb",
@@ -375,6 +391,7 @@ export function CVForm({ onBuild }) {
               </div>
               <div className="item-actions">
                 <button
+                  type="button"
                   className="btn-edit"
                   onClick={() => editExperience(experience.id)}
                   title="Edit"
@@ -382,6 +399,7 @@ export function CVForm({ onBuild }) {
                   ✎
                 </button>
                 <button
+                  type="button"
                   className="btn-delete"
                   onClick={() => deleteExperience(experience.id)}
                   title="Delete"
@@ -408,8 +426,9 @@ export function CVForm({ onBuild }) {
           </h4>
 
           <div className="form-group">
-            <label>Company Name*</label>
+            <label htmlFor="company-name">Company Name*</label>
             <input
+              id="company-name"
               type="text"
               name="companyName"
               onChange={updateExperience}
@@ -419,8 +438,9 @@ export function CVForm({ onBuild }) {
           </div>
 
           <div className="form-group">
-            <label>Position Title*</label>
+            <label htmlFor="position-title">Position Title*</label>
             <input
+              id="position-title"
               type="text"
               name="positionTitle"
               onChange={updateExperience}
@@ -430,9 +450,12 @@ export function CVForm({ onBuild }) {
           </div>
 
           <div className="form-group">
-            <label>Main Responsibilities (optional)</label>
+            <label htmlFor="job-description">
+              Main Responsibilities (optional)
+            </label>
 
             <textarea
+              id="job-description"
               name="mainResponsibilities"
               rows="4"
               onChange={updateExperience}
@@ -454,8 +477,9 @@ export function CVForm({ onBuild }) {
             className="date-arranger"
           >
             <div className="form-group" style={{ flex: 1 }}>
-              <label>Start Date*</label>
+              <label htmlFor="start-date">Start Date*</label>
               <input
+                id="start-date"
                 type="date"
                 name="startDate"
                 onChange={updateExperience}
@@ -463,8 +487,9 @@ export function CVForm({ onBuild }) {
               />
             </div>
             <div className="form-group" style={{ flex: 1 }}>
-              <label>End Date (optional)</label>
+              <label htmlFor="end-date">End Date (optional)</label>
               <input
+                id="end-date"
                 type="date"
                 name="endDate"
                 onChange={updateExperience}
@@ -477,6 +502,7 @@ export function CVForm({ onBuild }) {
 
           <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
             <button
+              type="button"
               className="btn-save"
               style={{
                 background: "#2563eb",
@@ -534,6 +560,7 @@ export function CVForm({ onBuild }) {
             </div>
             <div className="item-actions">
               <button
+                type="button"
                 className="btn-edit"
                 onClick={() => editLink(link.id)}
                 title="Edit"
@@ -541,6 +568,7 @@ export function CVForm({ onBuild }) {
                 ✎
               </button>
               <button
+                type="button"
                 className="btn-delete"
                 onClick={() => deleteLink(link.id)}
                 title="Delete"
@@ -589,6 +617,7 @@ export function CVForm({ onBuild }) {
 
           <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
             <button
+              typeof="button"
               className="btn-save"
               type="button" // Important: type="button" so it doesn't submit the whole form
               style={{
@@ -615,17 +644,11 @@ export function CVForm({ onBuild }) {
   return (
     <div className="wizard-container">
       <ErrorToast message={errorMessage} onClose={() => setErrorMessage("")} />
-      <form
-        id="cv-form"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        {step === 1 && GeneralInfo}
-        {step === 2 && EducationForm}
-        {step === 3 && ExperienceForm}
-        {step === 4 && LinksForm}
-      </form>
+
+      {step === 1 && GeneralInfo}
+      {step === 2 && EducationForm}
+      {step === 3 && ExperienceForm}
+      {step === 4 && LinksForm}
 
       <div className="wizard-footer">
         <button type="button" onClick={prevStep} className="btn-back">
@@ -637,19 +660,7 @@ export function CVForm({ onBuild }) {
             Next Step &rarr;
           </button>
         ) : (
-          <button
-            type="submit"
-            form="cv-form"
-            onClick={(e) => {
-              e.preventDefault();
-              if (cvInfo.fullName && cvInfo.email && cvInfo.phoneNo) {
-                onBuild();
-              } else {
-                setErrorMessage("Please fill in all required fields");
-              }
-            }}
-            className="btn-submit"
-          >
+          <button type="submit" onClick={handleCvBuild} className="btn-submit">
             Build CV 🚀
           </button>
         )}
