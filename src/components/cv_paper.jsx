@@ -85,6 +85,9 @@ export function CVPreview({ info, onEdit }) {
                     Date: {edu.startDate} to {edu.endDate}
                   </span>
                 </div>
+                <div style={{ fontWeight: "600" }}>
+                  Title of study: {edu.titleOfStudy}
+                </div>
                 <div style={{ fontWeight: "600" }}>Degree: {edu.degree}</div>
               </div>
             ))}
