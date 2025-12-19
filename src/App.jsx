@@ -12,7 +12,7 @@ export function App() {
 
   return (
     <div className="app-container">
-      <Header onStartBuild={() => setShowForm(true)} />
+      <Header onStartBuild={() => setShowForm(true)} cvData={cvData} />
 
       <main className="main-content">
         {showForm ? (
