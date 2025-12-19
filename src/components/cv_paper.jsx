@@ -58,7 +58,6 @@ export function CVPreview({ info, onEdit }) {
                   rel="noopener noreferrer"
                   className="cv-link-item"
                 >
-                  {/* Small icon for visual flair */}
                   🔗 {link.label}
                 </a>
               ))}

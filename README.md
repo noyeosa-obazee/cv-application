@@ -1,16 +1,35 @@
-# React + Vite
+📝 CV Forge
+CV Forge is a web application that helps users build a professional CV/Resume and export it as a PDF. Built with React and designed for simplicity.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Features
+Real-time Preview: See your changes instantly as you type.
 
-Currently, two official plugins are available:
+Multi-Step Wizard: Organized form flow (General Info, Education, Experience, Links).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Auto-Save: Uses LocalStorage so you never lose your progress on refresh.
 
-## React Compiler
+PDF Export: Optimized CSS for printing directly to PDF (A4 format).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Responsive Design: Works on mobile and desktop.
 
-## Expanding the ESLint configuration
+🛠️ Tech Stack
+React (Hooks, State Management)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+CSS3 (Custom styling, Media queries for print)
+
+Vite (Build tool)
+
+🚀 How to Run Locally
+Clone the repository
+
+🤝 Contributing
+Feel free to fork this project and submit a Pull Request if you want to add features like:
+
+Color theme selection.
+
+Drag-and-drop reordering.
+
+More template designs.
+
+📄 License
+This project is open source and available under the MIT License.
