@@ -1,8 +1,8 @@
 export function Header({ onStartBuild, cvData }) {
-  const hasStarted =
+  const hasStarted =cvData && (
     (cvData.fullName && cvData.fullName.trim() !== "") ||
     (cvData.email && cvData.email.trim() !== "") ||
-    (cvData.phoneNo && cvData.phoneNo.trim() !== "");
+    (cvData.phoneNo && cvData.phoneNo.trim() !== ""));
   return (
     <header className="header">
       <div className="header-logo">CV Forge 🔨</div>
